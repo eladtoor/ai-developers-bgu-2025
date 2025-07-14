@@ -1,0 +1,41 @@
+Dota 2: Map-Reduce Approach Timeline Summary
+==================================================
+
+Timeline of Dota 2 History:
+
+- 2009: Valve Corporation acquires the intellectual property rights of Dota, marking a new era in competitive gaming.
+- 2011: The Inaugural International tournament is held at Gamescom in Cologne, Germany, with a $1.6 million prize pool.
+- 2012: Introduction of the Dota 2 Workshop for community-created cosmetic items.
+- 2013:
+  - July 9: Valve Corporation officially releases Dota 2 after an extensive beta period that started in 2011.
+  - August 7-11: The International 2013 is held at Benaroya Hall in Seattle with a $2.8 million prize pool, won by Alliance.
+  - Introduction of the Battle Pass system for Dota 2.
+- 2014:
+  - July 18-21: The International 2014 is held at KeyArena in Seattle with the introduction of the Compendium and a $10.9 million prize pool, won by Newbee.
+  - September 24: Patch 6.82 is introduced, bringing comeback mechanics, Roshan respawn timer changes, and the Aegis of the Immortal.
+- 2015:
+  - April 30: Release of the 6.84 patch introducing changes to the game's economy and item system.
+  - May 15: Release of the 7.06 patch introducing changes to the game's map layout and the backpack system.
+  - Introduction of the Source 2 engine for Dota 2.
+- 2016:
+  - August 8-13: The International 2016 is held with Wings Gaming claiming victory.
+  - December 12: Patch 7.00 is introduced, bringing the talent system, backpack system, and shrines. Monkey King hero is released as part of this patch.
+- 2017:
+  - October 30: Dark Willow and Pangolier heroes are released as part of the 7.07 patch.
+  - Introduction of the Dota Pro Circuit for structured tournaments leading to direct invites to The International.
+- 2018:
+  - August: Grimstroke hero is released.
+  - November 19: Release of the 7.20 patch introducing changes to the game's economy and experience systems.
+- 2019:
+  - March: Mars hero is released.
+  - November 19: Void Spirit hero is released.
+  - November 26: Introduction of neutral items in the 7.23 patch.
+- 2021:
+  - August 18: Release of the 7.30 patch introducing new items like Wraith Pact and Revenant's Brooch.
+
+Ongoing Developments:
+- Introduction of Aghanim's Scepter upgrades for heroes in various patches.
+- Major tournaments hosted by organizations like ESL, DreamHack, and PGL.
+- Development of features like replay system, spectator system, and Battle Pass to enhance user experience and support the competitive scene.
+- Expansion of the competitive scene into new regions and development of new tournament formats.
+- Dota 2 continues to evolve with new heroes, items, and mechanics to maintain competitiveness and freshness in the game.

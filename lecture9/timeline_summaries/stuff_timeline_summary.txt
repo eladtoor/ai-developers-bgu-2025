@@ -1,0 +1,67 @@
+Dota 2: Stuff Approach Timeline Summary
+==================================================
+
+Timeline:
+
+2009:
+- Valve Corporation acquires the intellectual property rights to Dota, marking the beginning of a new era in competitive gaming.
+
+2011:
+- Valve launches the beta period for Dota 2.
+- The inaugural International tournament is held, setting a new standard for esports prize money.
+
+2013:
+- July 9: Valve officially releases Dota 2.
+- Introduction of the Battle Pass system.
+
+2014:
+- September 24: Patch 6.82 introduces comeback mechanics, Roshan respawn timer changes, and Aegis of the Immortal.
+- April 30: Patch 6.84 introduces changes to the game's economy and item system.
+
+2015:
+- Introduction of the Source 2 engine, enhancing graphics and performance capabilities.
+
+2016:
+- December 12: Patch 7.00 introduces talent system, backpack system, and shrines.
+- December 12: Monkey King hero released.
+- May 15: Patch 7.06 introduces significant changes to the game's map layout.
+- August 18: Patch 7.20 introduces changes to the game's economy and experience systems.
+
+2017:
+- October 30: Dark Willow and Pangolier heroes released as part of patch 7.07.
+- Introduction of neutral items in patch 7.23.
+
+2018:
+- August: Grimstroke hero released.
+- November 19: Patch 7.20 introduces new items like Wraith Pact and Revenant's Brooch.
+
+2019:
+- March: Mars hero released.
+- November: Void Spirit hero released.
+
+2021:
+- August 18: Patch 7.30 introduces new items like Wraith Pact and Revenant's Brooch.
+
+Tournament Timeline:
+2011:
+- The International tournament is held at Gamescom in Cologne, Germany.
+
+2013:
+- The International 2013 is held at Benaroya Hall in Seattle.
+
+2014:
+- The International 2014 is held at KeyArena in Seattle.
+
+2015:
+- The International 2015 is held at KeyArena in Seattle.
+
+2016:
+- The International 2016 is held.
+
+Key Developments:
+- Introduction of the Battle Pass system in 2013.
+- Introduction of the Source 2 engine in 2015.
+- Development of the Dota 2 Workshop in 2012.
+- Introduction of the Dota Pro Circuit in 2017.
+
+Overall, the timeline showcases the evolution of Dota 2 from its release in 2013 to the present day, highlighting key patches, hero releases, tournament milestones, and technical innovations that have shaped the game's history.

@@ -1,0 +1,33 @@
+Summarization Approaches Comparison
+========================================
+
+Document: LLM-Powered Autonomous Agents
+URL: https://lilianweng.github.io/posts/2023-06-23-agent/
+
+STUFF SUMMARIZATION:
+--------------------
+Time: 4.45 seconds
+Pros:
+• Simple implementation
+• Fast for short documents
+• Single API call
+Cons:
+• Limited by token context
+• May lose detail in long documents
+• Not scalable
+
+MAP-REDUCE SUMMARIZATION:
+-------------------------
+Time: 28.56 seconds
+Pros:
+• Handles long documents
+• Scalable approach
+• Better detail preservation
+• Parallel processing possible
+Cons:
+• More complex implementation
+• Multiple API calls
+• Slower for short documents
+
+RECOMMENDATION:
+---------------

@@ -1,0 +1,15 @@
+# Core LangChain and OpenAI
+langchain
+langchain_openai
+openai
+python-dotenv
+
+# Web scraping
+requests
+beautifulsoup4
+
+# Text processing
+langchain-text-splitters
+
+# Additional utilities
+tqdm 
