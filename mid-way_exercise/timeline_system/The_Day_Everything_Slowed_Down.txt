@@ -1,0 +1,98 @@
+“The Day Everything Slowed Down”
+It started like any other Tuesday—well, technically, it started Monday night, but I didn’t realize it at the time. Monday evening was unusually quiet. I remember shutting down my work laptop around 7:12 PM. I'd been dealing with a pile of backlog tickets and just wanted the day to end. I watched some dumb comedy on Netflix and went to bed by 10:30 PM.
+
+Tuesday, 6:09 AM. My phone buzzed while I was still half-asleep. It was one of those low-priority alert notifications from the AV console—something about a “heuristic scan trigger” on one of the dev servers. I groaned and ignored it. We get tons of those, and it’s usually just someone compiling junk or testing malware analysis tools in a sandbox they forgot to label properly.
+
+By 7:00 AM, I was at my desk, half-heartedly sipping burnt coffee, scrolling through email. I had a few Slack messages queued up from overnight, mostly routine junk. But there was one from Kiera, our cloud infrastructure lead, timestamped 3:27 AM, that just said:
+
+“Hey, did anyone restart the build runner on staging-3? It rebooted by itself.”
+
+I figured I’d check it after standup.
+
+8:17 AM, standup started. It was the usual round of “blockers,” "no blockers," and mumbling. I mentioned the AV alert and the mysterious reboot, and Ed—the backend dev who always has a smart comment—said something like, “Ghosts in the shell.” We chuckled. I jotted it down to look into deeper.
+
+8:43 AM, I pulled up the system logs for staging-3. There was indeed a reboot logged around 3:11 AM, but no matching patch activity or automation job triggered at that time. Weird. Even weirder, the uptime counter reset, but the hardware status logs had a brief gap. Like… maybe five minutes of no entries at all. I chalked it up to a fluke and made a mental note to check the kernel logs later.
+
+9:20 AM, the support team pinged me on our IT helpdesk Slack channel. Multiple users in sales were reporting extremely slow file access on the shared drive. I walked over to their area—old habit, I like seeing problems with my own eyes. Sure enough, file explorer was lagging like crazy when trying to open anything from the \\corp-fs02\Q2_Pipeline share.
+
+I went back to my desk and checked the SMB traffic. There was a ton of it, all coming from one user—sharris—and hitting the same folder. At first, I assumed she was copying something big. But when I asked her about it, she looked puzzled.
+
+“I haven’t even logged in yet,” she said. “I’m still on my personal laptop.”
+
+That didn’t sit right. Her domain account had dozens of open sessions. When I pulled the login records, her credentials had authenticated successfully at 6:12 AM, and then again at 6:53, and then once more right around 7:41 AM. Three logins from different subnets. That’s when I started to get uneasy.
+
+I sent a quick message to Matt, our security engineer:
+
+“Hey, got something odd with sharris’ logins. May be worth a look.”
+
+While I waited, I kept poking at the SMB traffic. Wireshark was already showing signs of malformed packets from one of the internal switches—SW-07B—which connects the west wing of the third floor. That's where our two unused marketing workstations are located. I walked over, expecting to find them powered off.
+
+Nope.
+
+10:12 AM, I found both machines on. One had a sticky note with “Training PC - Do Not Use” taped to it. But they were both logged in. The usernames were guest accounts, but someone had clearly used them recently. I pulled out my phone and took a few pictures of the screens just in case.
+
+Back at my desk, 10:34 AM, Matt had replied. He was already looking into the login patterns and asked for a copy of the logs. I zipped and sent them over.
+
+By 11:03 AM, the helpdesk was now logging performance issues across the board. Not just the sales share—some developers were reporting Git repo timeouts. I asked Dave from networking if there was any latency showing up on our WAN monitors. He said, “Nothing huge, just a few packet drops from corp-vpn3, but that’s been flaky for weeks.”
+
+That’s when something clicked for me: the corp-vpn3 node was tied into our VPN tunnel for third-party access—used mostly by contractors and offsite analysts. I opened up the VPN auth logs and searched for any unusual login patterns. Sure enough, a user—jmalik—had connected via corp-vpn3 at 2:47 AM and stayed online for 6 hours.
+
+That didn’t make any sense. Junaid Malik was out on leave. He’d filed PTO two weeks ago.
+
+I called Matt. “You seeing this? jmalik was connected overnight via corp-vpn3. He’s not even in the country right now.”
+
+Matt was silent for a beat. “Yeah,” he finally said. “I see it. And I think I found something worse.”
+
+I spun around in my chair.
+
+“Check your DNS logs,” he continued. “We’re resolving a bunch of outbound connections to weird subdomains—stuff like updates-status-sync.live and metrics.windowupdate.io. These aren’t Microsoft-owned.”
+
+I jumped into our internal DNS logs. He was right—hundreds of requests since early that morning. Some as early as 4:23 AM.
+
+At 11:48 AM, we escalated to a full internal incident. I sent out a containment advisory to the IT team: “Lock down VPN access, audit all active sessions, and begin isolating the west wing switch stack.”
+
+We closed the VLAN to any outbound traffic except through our inspection proxy. The noise dropped immediately.
+
+12:32 PM, lunch time came and went, but none of us left our desks. By then we’d confirmed that sharris’s account had been compromised, probably used as a lateral jump point after an earlier compromise. I was now 80% sure the training PC had been used as an entry vector. One of them had a USB stick still inserted, labeled "MARKETING_CAMPAIGN_2020." That model of machine had no endpoint protection installed—budget cuts.
+
+By 2:06 PM, I had a pit in my stomach.
+
+A weird file called logi_loader.dll had been copied to four separate machines around 3:13 AM—including staging-3, one of the idle lab servers, and even our internal Jenkins node. None of those machines had antivirus alerts. The hash didn’t match anything in VirusTotal.
+
+Then something else caught my eye.
+
+On staging-3, the event logs showed a file permission change to buildconfig.yaml at 3:11 AM, before the machine rebooted. That shouldn’t be possible. I flagged it to Matt but moved on—there was too much to triage.
+
+3:39 PM, Kiera messaged me:
+
+“You’re gonna want to look at egress volumes on the staging subnet.”
+
+Data was flowing out. A lot of it. I checked our traffic analyzer—over 7GB of outbound traffic in the last six hours, piped slowly over HTTPS to cdn.nodeflux.ai.
+
+Our DLP didn’t catch it.
+
+4:55 PM, I joined the emergency call. Legal, security, and two of the VPs were on. I gave a blunt summary of what we knew. Unauthorized access, credential compromise, probable exfiltration. We agreed to start crafting comms for a potential breach notification, “just in case.”
+
+The rest of the day was a blur. We worked until 8:19 PM, mostly silent except for keyboard clacks and the occasional sigh.
+
+At 9:02 PM, I finally stood up and left the office. I hadn't eaten since the night before. Outside smelled like rain, but it hadn’t fallen yet.
+
+I woke up groggy the next day, Wednesday, 6:45 AM. I dreamt that all the servers had grown arms and were shaking me awake.
+
+When I got to the office around 7:30, Matt was already there, eyes bloodshot. He nodded silently.
+
+We ran full scans on the training machines. One of them had a hidden scheduled task, cleverly disguised as a printer driver update. It had triggered daily at 3:11 AM, every morning for the past two weeks.
+
+We had missed it.
+
+By 9:24 AM, we discovered that the same executable—logi_loader.dll—was present in compressed form on the Jenkins pipeline, embedded in a test runner artifact. Which meant every build had been packaging it silently. For how long? We didn’t know yet.
+
+By 11:03 AM, our legal team was prepping disclosures.
+
+At 1:11 PM, I sat at my desk, rereading logs, piecing together the whole thing from fragments of time. That file permission change at 3:11 AM on staging-3 now seemed a lot more significant. It had happened before the reboot. Which means the file was altered by something running in memory.
+
+Something we didn’t detect.
+
+The malware was careful. The attacker used dormant accounts, hid in plain sight, and timed everything to match system quiet hours.
+
+And I can’t stop wondering: how long had it been there before we noticed?

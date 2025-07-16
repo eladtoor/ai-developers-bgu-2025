@@ -233,41 +233,56 @@ def main():
     print("="*60)
     print("TIMELINE SYSTEM RAGAS EVALUATION")
     print("="*60)
-    print("\nChoose which timeline output to evaluate:")
-    print("1. Map-Reduce Timeline")
-    print("2. Refine Timeline")
-    print("3. Sample Answers (default)")
-    print("Type 1, 2, or 3 and press Enter.")
-    print("-"*60)
-    choice = input("Your choice: ").strip()
-
-    if choice == '1':
-        timeline_path = '../timeline_system/map_reduce_timeline_house_break_in_story.txt'
-        print("\nEvaluating Map-Reduce Timeline...")
-        ground_truth_data = load_ground_truth()
-        model_answers = extract_answers_from_timeline(timeline_path, ground_truth_data)
-    elif choice == '2':
-        timeline_path = '../timeline_system/refine_timeline_house_break_in_story.txt'
-        print("\nEvaluating Refine Timeline...")
-        ground_truth_data = load_ground_truth()
-        model_answers = extract_answers_from_timeline(timeline_path, ground_truth_data)
-    else:
-        print("\nEvaluating with Sample Answers...")
-        model_answers = create_sample_answers_for_testing()
-
+    print("\nEvaluating both Map-Reduce and Refine timelines...")
+    
+    ground_truth_data = load_ground_truth()
+    
+    # Evaluate Map-Reduce Timeline
+    print("\n" + "="*40)
+    print("EVALUATING MAP-REDUCE TIMELINE")
+    print("="*40)
+    
     try:
-        print("Starting evaluation...")
-        results = run_ragas_evaluation(model_answers)
-        print_evaluation_summary(results)
+        map_reduce_path = '../timeline_system/map_reduce_timeline_the_day_everything_slowed_down.txt'
+        print(f"Loading timeline from: {map_reduce_path}")
+        map_reduce_answers = extract_answers_from_timeline(map_reduce_path, ground_truth_data)
         
-        # Print matched answers for comparison
-        print_matched_answers(ground_truth_data, model_answers)
+        print("Running RAGAS evaluation for Map-Reduce...")
+        map_reduce_results = run_ragas_evaluation(map_reduce_answers, "map_reduce_evaluation_results.json")
+        print_evaluation_summary(map_reduce_results)
         
-        print("\n✅ Evaluation completed successfully!")
-        print("Check evaluation_results.json for detailed results.")
+        print("✅ Map-Reduce evaluation completed!")
+        print("Results saved to: map_reduce_evaluation_results.json")
+        
     except Exception as e:
-        print(f"\n❌ Error during evaluation: {e}")
-        print("Please check your setup and try again.")
+        print(f"❌ Error evaluating Map-Reduce: {e}")
+    
+    # Evaluate Refine Timeline
+    print("\n" + "="*40)
+    print("EVALUATING REFINE TIMELINE")
+    print("="*40)
+    
+    try:
+        refine_path = '../timeline_system/refine_timeline_the_day_everything_slowed_down.txt'
+        print(f"Loading timeline from: {refine_path}")
+        refine_answers = extract_answers_from_timeline(refine_path, ground_truth_data)
+        
+        print("Running RAGAS evaluation for Refine...")
+        refine_results = run_ragas_evaluation(refine_answers, "refine_evaluation_results.json")
+        print_evaluation_summary(refine_results)
+        
+        print("✅ Refine evaluation completed!")
+        print("Results saved to: refine_evaluation_results.json")
+        
+    except Exception as e:
+        print(f"❌ Error evaluating Refine: {e}")
+    
+    print("\n" + "="*60)
+    print("ALL EVALUATIONS COMPLETED!")
+    print("="*60)
+    print("Files created:")
+    print("- map_reduce_evaluation_results.json")
+    print("- refine_evaluation_results.json")
 
 if __name__ == "__main__":
     main() 

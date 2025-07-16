@@ -1,0 +1,50 @@
+
+• 2:47 AM - User jmalik connected via corp-vpn3
+• 3:13 AM - File logi_loader.dll copied to four separate machines
+• 3:11 AM - File permission change to buildconfig.yaml on staging-3
+• 4:23 AM - Hundreds of requests in internal DNS logs
+• 6:09 AM - Received low-priority alert notification exactly heuristic scan trigger on dev server
+• 6:12 AM - Credentials authenticated successfully
+• 6:53 AM - Credentials authenticated successfully
+• 7:12 PM - Shut down work laptop
+• 6:45 AM - Woke up groggy on Wednesday
+• 7:00 AM - Received a Slack message from Kiera exactly the build runner on staging-3 rebooting by itself
+• 7:30 AM - Arrived at the office, Matt was already there
+• 8:17 AM - Standup started, mentioned the AV alert and mysterious reboot
+• 8:43 AM - Pulled up the system logs for staging-3
+• 9:20 AM - Support team pinged on IT helpdesk Slack channel exactly slow file access in sales
+• 9:24 AM - Discovered hidden scheduled task triggering daily at 3:11 AM
+• 10:12 AM - Found both machines on with sticky note "Training PC - Do Not Use" taped to one
+• 10:30 PM - Went to bed
+• 10:34 AM - Matt replied and asked for a copy of the logs
+• 11:03 AM - Helpdesk started logging performance issues across the board, developers reporting Git repo timeouts, asked Dave exactly WAN monitors
+• 11:48 AM - Escalated to a full internal incident
+• 1:11 PM - Rereading logs and piecing together information from fragments of time
+• 2:06 PM - Feeling of unease in the situation
+• 2:47 PM - Kiera messaged exactly egress volumes on the staging subnet
+• 4:55 PM - Joined emergency call with Legal, security, and two VPs, gave summary of unauthorized access
+• 8:19 PM - Worked until this time, mostly silent except for keyboard clacks
+• 9:02 PM - Stood up and left the office
+• Time not specified - Planned to check the build runner issue after standup
+• Time not specified - Ed made a comment exactly "Ghosts in the shell" regarding the reboot
+• Time not specified - Walked over to sales area to see file access issue
+• Time not specified - Checked SMB traffic and noticed high traffic from user sharris to the same folder
+• Time not specified - Sent a message to Matt exactly sharris' logins
+• Time not specified - Noticed signs of malformed packets from SW-07B
+• Time not specified - Walked over to the west wing of the third floor and found the marketing workstations powered on
+• Time not specified - Junaid Malik was out on leave
+• Time not specified - Narrator called Matt exactly jmalik's connection
+• Time not specified - Matt found unusual DNS logs
+• Time not specified - Matt instructed to check DNS logs
+• Time not specified - Narrator found hundreds of requests in DNS logs since early morning, some as early as 4:23 AM
+• Time not specified - Confirmed sharris's account compromised
+• Time not specified - Training PC used as entry vector
+• Time not specified - USB stick labeled "MARKETING_CAMPAIGN_2020" found
+• Time not specified - Endpoint protection not installed on machine
+• Time not specified - Malware detected
+• Time not specified - Attacker used dormant accounts
+• Time not specified - Attacker hid in plain sight
+• Time not specified - Attacker timed activities to match system quiet hours
+• Time not specified - Question raised exactly how long malware had been present before detection
+• Time not specified - Hadn't eaten since the night before
+• Time not specified - Dreamt exactly servers with arms shaking awake.

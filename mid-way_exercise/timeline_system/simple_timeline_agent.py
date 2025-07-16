@@ -3,10 +3,11 @@ from langchain.agents import AgentExecutor, create_openai_functions_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from timeline_tools_simple import get_timeline_tools
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+# Load environment variables from project root
+load_dotenv(dotenv_path=Path(__file__).resolve().parents[2] / ".env")
 
 def create_simple_timeline_agent():
     """Create a simple agent that only does timeline summarization"""
@@ -56,13 +57,12 @@ def main():
     print("4. Save both results to separate files")
     
     print("\n📁 Available documents:")
-    print("- car_insurance_document.txt")
-    print("- house_break_in_story.txt")
+    print("- The Day Everything Slowed Down")
     print("- Or provide your own file path")
     
     print("\nExample usage:")
-    print("- 'Process house_break_in_story.txt'")
-    print("- 'Create timelines from car_insurance_document.txt'")
+    print("- 'Process The Day Everything Slowed Down'")
+    print("- 'Create timelines from The Day Everything Slowed Down'")
     print("- 'Summarize timeline from my_file.txt'")
     
     print("\nType 'quit' to exit")
