@@ -1,0 +1,20 @@
+Transformers, Tokenizers in LLM Review:
+
+https://docs.google.com/document/d/1LC0n5dUIEM7W5uW045lf139M5PzNpkzK1OshxBCQwx8/edit?tab=t.0
+
+LLM Prompting, Security Overview:
+
+https://docs.google.com/document/d/1fL38hl_NRDGE2ARLyFBrbQp_SAOQEynLnCsjayyL-Z4/edit?tab=t.0
+
+LLM Architecture for Engineers:
+
+https://docs.google.com/document/d/1iirVqc4yJJB-GWroxxvzGCMk2_DtC50skC4uZBoa-5A/edit?tab=t.0
+
+
+RAG and Embeddings Overview:
+
+https://docs.google.com/document/d/1RZ_yLcTzglXaSR2c9r4smkGIB6pIM_YzXPHjhPntmoc/edit?tab=t.0
+
+Vector Databases, Semantic Search Overview:
+
+https://docs.google.com/document/d/1LfmR_XIheg_PiQ6yXGVJjLv3f-Nw6OvjYBjArpgfUbw/edit?tab=t.0
