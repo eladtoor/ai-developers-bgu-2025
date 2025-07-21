@@ -20,7 +20,7 @@ load_dotenv()
 openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Initialize ChromaDB client
-chroma_client = chromadb.PersistentClient(path="../tools/chroma_db")
+chroma_client = chromadb.PersistentClient(path="../utils/chroma_db")
 collection_name = "cybersecurity-story"
 
 # Get ChromaDB collection
@@ -52,14 +52,14 @@ def search_documents(question: str) -> str:
     try:
         # Get embedding for the question using the same model as data_loader
         question_embedding = embedding_client.embeddings.create(
-            model="text-embedding-3-small",
+            model="text-embedding-3-large",
             input=question
         ).data[0].embedding
         
         # Query ChromaDB for relevant chunks
         results = collection.query(
             query_embeddings=[question_embedding],
-            n_results=3
+            n_results=2
         )
         
         if not results['documents'][0]:

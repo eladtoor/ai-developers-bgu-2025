@@ -15,7 +15,7 @@ from openai import OpenAI
 project_root = Path(__file__).parent.parent
 sys.path.append(str(project_root))
 
-from tools.qa_tools import search_documents
+from tools.rerank_qa_tools import rerank_search_documents
 
 # Load environment variables
 load_dotenv()
@@ -140,7 +140,7 @@ def run_evaluation():
         
         try:
             # Get chunks using our search
-            search_result = search_documents(question)
+            search_result = rerank_search_documents(question)
             chunks = get_chunks_from_search(search_result)
             
             print(f"   Retrieved {len(chunks)} chunks")

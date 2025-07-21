@@ -25,7 +25,7 @@ def create_story_analysis_agent():
     all_tools = timeline_tools + qa_tools
     
     # Create the language model
-    llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
+    llm = ChatOpenAI(model="gpt-4.1-nano", temperature=0)
     
     # Create the prompt template
     prompt = ChatPromptTemplate.from_messages([
@@ -33,6 +33,8 @@ def create_story_analysis_agent():
 
 1. TIMELINE REQUESTS: Create timeline summaries using Map-Reduce and Refine methods
 2. RAG Q&A REQUESTS: Answer specific questions about the cybersecurity incident
+
+IMPORTANT: For timeline requests, you MUST create BOTH a Map-Reduce timeline AND a Refine timeline. Never create just one.
 
 Available Timeline Tools:
 - map_reduce_timeline: Create timeline with bullet points using Map-Reduce method
@@ -52,10 +54,14 @@ CRITICAL RULES:
 - DO NOT continue with additional tools after completing the request
 
 For TIMELINE requests:
-- Use ONLY map_reduce_timeline and refine_timeline
-- Save both results to separate files
+- You MUST create BOTH timelines: map_reduce_timeline AND refine_timeline
+- Step 1: Use map_reduce_timeline tool first
+- Step 2: Use refine_timeline tool second
+- Both tools will save results to separate files
 - Do NOT use any RAG tools
-- STOP after creating both timelines
+- Do NOT stop after just one timeline
+- You MUST complete BOTH steps before stopping
+- If you only create one timeline, you have NOT completed the request
 
 For RAG Q&A requests:
 - Use ONLY search_documents to find relevant chunks
@@ -77,7 +83,13 @@ Always ask for the file path if it's not provided."""),
     agent = create_openai_functions_agent(llm, all_tools, prompt)
     
     # Create the agent executor
-    agent_executor = AgentExecutor(agent=agent, tools=all_tools, verbose=True, handle_parsing_errors=True)
+    agent_executor = AgentExecutor(
+        agent=agent, 
+        tools=all_tools, 
+        verbose=True, 
+        handle_parsing_errors=True,
+        max_iterations=10  # Allow more iterations to complete both timelines
+    )
     
     return agent_executor
 

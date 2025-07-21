@@ -15,7 +15,7 @@ from openai import OpenAI
 project_root = Path(__file__).parent.parent
 sys.path.append(str(project_root))
 
-from tools.qa_tools import search_documents, generate_answer
+from tools.rerank_qa_tools import rerank_search_documents, generate_answer
 
 # Load environment variables
 load_dotenv()
@@ -109,7 +109,7 @@ def run_evaluation():
         
         try:
             # Step 1: Get context chunks
-            search_result = search_documents(question)
+            search_result = rerank_search_documents(question)
             chunks = get_chunks_from_search(search_result)
             context = combine_chunks(chunks)
             
