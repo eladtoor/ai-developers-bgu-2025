@@ -1,0 +1,30 @@
+
+• 3:11 AM - File permission change to buildconfig.yaml on staging-3
+• 3:11 AM - Hidden scheduled task triggered on training machine, disguised as a printer driver update
+• 3:13 AM - logi_loader.dll copied to four machines, including staging-3, idle lab servers, and internal Jenkins node
+• 6:09 AM - Received low-priority alert notification from AV console exactly "heuristic scan trigger" on dev server
+• 6:12 AM - sharris' domain account authenticated successfully
+• 6:53 AM - sharris' domain account authenticated successfully again
+• 7:41 AM - sharris' domain account authenticated successfully for the third time
+• 7:45 AM - Sent message to Matt, the security engineer, exactly sharris' odd logins
+• 8:00 AM - Investigated SMB traffic and discovered malformed packets from internal switch SW-07B
+• 8:17 AM - Standup meeting started, discussed AV alert and mysterious reboot on staging-3
+• 8:30 AM - Checked marketing workstations on the third floor and found them powered on, contrary to expectations
+• 8:43 AM - Pulled up system logs for staging-3, found reboot at 3:11 AM with no matching patch activity or automation job triggered, uptime counter reset with brief gap in hardware status logs
+• 9:24 AM - Discovered hidden scheduled task triggering daily at 3:11 AM on training machine
+• 10:12 AM - Found both machines on with guest accounts logged in, took pictures of screens
+• 10:30 AM - Sent logs to Matt for investigation
+• 11:03 AM - Legal team prepping disclosures
+• 11:03 AM - Discovered logi_loader.dll present in compressed form on Jenkins pipeline, embedded in test runner artifact
+• 11:15 AM - Discovered jmalik connected via corp-vpn3 at 2:47 AM despite being on leave, alerted Matt
+• 1:11 PM - Legal team prepping disclosures
+• 1:11 PM - Reviewed logs, realized file permission change on staging-3 significant
+• 2:06 PM - Confirmed sharris's account compromised, likely used as lateral jump point
+• 3:39 PM - Kiera messaged exactly egress volumes on the staging subnet, discovered over 7GB of outbound traffic to cdn.nodeflux.ai not caught by DLP
+• 4:55 PM - Discovered over 7GB of outbound traffic to cdn.nodeflux.ai not caught by DLP
+• 4:55 PM - Joined emergency call with Legal, security, and two VPs to discuss unauthorized access, credential compromise, and potential breach notification
+• 8:19 PM - Continued working on the incident response until late evening
+• 9:02 PM - Left the office after a long day of work
+• 6:45 AM (next day) - Woke up groggy and headed to the office
+• 7:30 AM (next day) - Arrived at the office to find Matt already there, ready to continue the investigation
+• 3:11 AM (unknown date) - Malware carefully executed using dormant accounts, hidden in plain sight, and timed during system quiet hours, raising questions exactly how long it had been present before detection.

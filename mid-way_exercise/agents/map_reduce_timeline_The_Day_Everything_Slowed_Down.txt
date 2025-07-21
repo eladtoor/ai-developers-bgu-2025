@@ -1,0 +1,51 @@
+
+• 2:47 AM - User jmalik connected via corp-vpn3
+• 3:11 AM - Hidden scheduled task triggered on training machine
+• 3:11 AM - File permission change to buildconfig.yaml on staging-3
+• 3:13 AM - File logi_loader.dll copied to four separate machines
+• 3:39 PM - Kiera messaged exactly egress volumes on the staging subnet
+• 4:23 AM - Some requests in DNS logs
+• 6:09 AM - Phone buzzed with low-priority alert notification from AV console exactly heuristic scan trigger on dev server
+• 6:12 AM - sharris' credentials authenticated successfully
+• 6:53 AM - sharris' credentials authenticated successfully
+• 7:00 AM - Received a Slack message from Kiera exactly the build runner on staging-3 rebooting by itself
+• 7:12 PM - Shut down work laptop
+• 7:30 AM - Arrived at the office, Matt was already there
+• 8:17 AM - Standup started, mentioned the AV alert and mysterious reboot
+• 8:19 PM - Worked until this time, mostly silent except for keyboard clacks
+• 8:43 AM - Pulled up the system logs for staging-3, found a reboot logged exactly 3:11 AM
+• 9:20 AM - Support team pinged on IT helpdesk Slack channel exactly slow file access in sales
+• 9:24 AM - Discovered logi_loader.dll on Jenkins pipeline
+• 10:12 AM - Found both machines on with sticky note "Training PC - Do Not Use" taped to it, both logged in with guest accounts
+• 10:30 PM - Went to bed
+• 10:34 AM - Matt replied and was looking into login patterns, asked for a copy of the logs
+• 11:03 AM - Helpdesk started logging performance issues across the board, developers reporting Git repo timeouts, asked Dave from networking exactly WAN latency, mentioned packet drops from corp-vpn3
+• 11:03 AM - Legal team prepping disclosures
+• 11:48 AM - Escalated to a full internal incident
+• 12:32 PM - Sent containment advisory to IT team
+• 12:32 PM - Closed VLAN to outbound traffic except through inspection proxy
+• 12:32 PM - Confirmed sharris's account compromised
+• 1:11 PM - Reread logs and pieced together information from fragments of time
+• 2:06 PM - Feeling of unease in the situation
+• 2:47 PM - Joined emergency call with Legal, security, and two VPs, gave summary of unauthorized access
+• 4:23 AM - Hundreds of requests in internal DNS logs
+• 4:55 PM - Joined emergency call with Legal, security, and two VPs, gave summary of unauthorized access
+• 9:02 PM - Stood up and left the office
+• Time not specified - Planned to check the build runner issue after standup
+• Time not specified - Ed made a comment exactly "Ghosts in the shell" regarding the issue
+• Time not specified - Walked over to sales area and confirmed slow file access
+• Time not specified - Checked SMB traffic, found high traffic from user sharris
+• Time not specified - Narrator sent a message to Matt exactly sharris' logins
+• Time not specified - Narrator noticed signs of malformed packets from SW-07B
+• Time not specified - Narrator walked over to the west wing of the third floor to check the marketing workstations
+• Time not specified - Junaid Malik filed PTO two weeks ago
+• Time not specified - Conversation between narrator and Matt exactly jmalik's connection
+• Time not specified - Matt instructs narrator to check DNS logs
+• Time not specified - Narrator finds outbound connections to weird subdomains in DNS logs since early that morning
+• Time not specified - Malware detected
+• Time not specified - Attacker used dormant accounts
+• Time not specified - Attacker hid in plain sight
+• Time not specified - Attacker timed activities to match system quiet hours
+• Time not specified - Question raised exactly how long malware had been present before detection
+• Time not specified - Woke up groggy at 6:45 AM the next day
+• Time not specified - Arrived at the office exactly 7:30 AM, Matt was already there.

@@ -1,0 +1,35 @@
+
+• 7:12 PM - Shut down work laptop
+• 10:30 PM - Went to bed
+• 2:47 AM - jmalik connected via corp-vpn3
+• 3:11 AM - Staging-3 system logs show a reboot, file permission change to buildconfig.yaml, hidden scheduled task discovered on training machine triggering daily at this time
+• 3:13 AM - logi_loader.dll copied to four machines, including staging-3 and internal Jenkins node
+• 3:27 AM - Received Slack message from Kiera exactly the build runner on staging-3 rebooting
+• 3:39 AM - Kiera messaged exactly egress volumes on staging subnet
+• 4:23 AM - Outbound connections to updates-status-sync.live and metrics.windowupdate.io detected in DNS logs
+• 6:09 AM - Phone buzzed with low-priority alert notification exactly heuristic scan trigger on dev server
+• 6:12 AM - sharris' domain account authenticated successfully
+• 6:53 AM - sharris' domain account authenticated successfully again
+• 7:00 AM - At desk, sipping burnt coffee, checking emails and Slack messages
+• 7:30 AM - Arrived at the office, found Matt already there, eyes bloodshot, nodded silently
+• 8:17 AM - Standup meeting started, mentioned AV alert and mysterious reboot on staging-3
+• 8:43 AM - Pulled up system logs for staging-3, found reboot at 3:11 AM with no matching patch activity or automation job triggered
+• 9:20 AM - Support team pinged on IT helpdesk Slack channel exactly slow file access in sales area
+• 9:20 AM - Investigated slow file access issue in sales area, found excessive SMB traffic from user sharris to \\corp-fs02\Q2_Pipeline share
+• 9:24 AM - Discovered hidden scheduled task triggering daily at 3:11 AM on training machine
+• 9:25 AM - Sent message to Matt, the security engineer, exactly odd logins from sharris
+• 9:30 AM - Discovered malformed packets from internal switch SW-07B, located in the west wing of the third floor
+• 9:35 AM - Checked unused marketing workstations in the west wing, found them powered on
+• 10:12 AM - Found both machines on with guest accounts logged in, took pictures of screens
+• 10:34 AM - Sent logs to Matt, who was already investigating login patterns
+• 11:03 AM - Helpdesk logging performance issues across the board, developers reporting Git repo timeouts, Dave from networking mentioned packet drops from corp-vpn3, legal team prepping disclosures
+• 11:48 AM - Escalated to a full internal incident, sent containment advisory to IT team to lock down VPN access, audit active sessions, and isolate west wing switch stack
+• 12:32 PM - Closed VLAN to outbound traffic except through inspection proxy, noise dropped immediately
+• 1:11 PM - Sat at desk, rereading logs, legal team prepping disclosures
+• 2:06 PM - Confirmed sharris's account compromised, suspected entry vector through training PC with USB stick labeled "MARKETING_CAMPAIGN_2020" and no endpoint protection installed, had a pit in my stomach
+• 3:39 PM - Kiera messaged exactly egress volumes on staging subnet, over 7GB of outbound traffic to cdn.nodeflux.ai not caught by DLP
+• 4:55 PM - Discovered over 7GB of outbound traffic to cdn.nodeflux.ai not caught by DLP, joined emergency call with Legal, security, and VPs to discuss unauthorized access and potential breach notification
+• 8:19 PM - Worked silently until this time
+• 9:02 PM - Left the office
+• 6:45 AM (next day) - Woke up groggy
+• 3:11 AM (previous day) - Malware carefully executed using dormant accounts, hid in plain sight, and timed activities to match system quiet hours. The attacker's presence raises questions exactly how long it had been undetected.

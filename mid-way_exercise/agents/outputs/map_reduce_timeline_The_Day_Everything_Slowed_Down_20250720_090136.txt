@@ -1,0 +1,28 @@
+
+• 2:47 AM - User jmalik connected via corp-vpn3
+• 3:11 AM - File permission change to buildconfig.yaml on staging-3
+• 3:13 AM - File logi_loader.dll copied to four separate machines
+• 3:39 PM - Kiera messaged exactly egress volumes on the staging subnet
+• 4:23 AM - Some requests in DNS logs
+• 6:09 AM - Phone buzzed with low-priority alert notification from AV console exactly heuristic scan trigger on dev server
+• 6:12 AM - sharris' credentials authenticated successfully
+• 6:45 AM - Woke up groggy on Wednesday
+• 6:53 AM - sharris' credentials authenticated successfully
+• 7:00 AM - Checking emails at desk, received message from Kiera exactly build runner reboot
+• 7:12 PM - Shut down work laptop
+• 7:30 AM - Arrived at the office, Matt was already there
+• 7:41 AM - sharris' credentials authenticated successfully
+• 8:17 AM - Standup meeting started, mentioned AV alert and mysterious reboot
+• 8:43 AM - Pulled up the system logs for staging-3, found a reboot logged exactly 3:11 AM
+• 9:20 AM - Support team pinged on IT helpdesk Slack channel exactly slow file access in sales
+• 9:24 AM - Discovered hidden scheduled task triggering daily at 3:11 AM
+• 10:12 AM - Found both machines on with sticky note "Training PC - Do Not Use" taped to it, both logged in with guest accounts
+• 10:30 PM - Went to bed
+• 10:34 AM - Matt replied and was looking into login patterns, asked for a copy of the logs
+• 11:03 AM - Helpdesk started logging performance issues across the board, developers reporting Git repo timeouts, asked Dave from networking exactly WAN monitors, mentioned packet drops from corp-vpn3
+• 11:48 AM - Escalated to a full internal incident
+• 1:11 PM - Rereading logs and piecing together information from fragments of time
+• 2:06 PM - Confirmed sharris's account compromised
+• 2:47 PM - Closed VLAN to outbound traffic except through inspection proxy
+• 4:55 PM - Joined emergency call with Legal, security, and two VPs, gave summary of unauthorized access and credential compromise
+• 9:02 PM - Stood up and left the office

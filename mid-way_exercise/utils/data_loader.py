@@ -130,7 +130,7 @@ def main():
     
     # Parse story file
     print("Parsing story file...")
-    story_text = loader.parse_story_file('../timeline_system/The_Day_Everything_Slowed_Down.txt')
+    story_text = loader.parse_story_file('../data/The_Day_Everything_Slowed_Down.txt')
     print(f"Story length: {len(story_text)} characters")
     
     # Create chunks

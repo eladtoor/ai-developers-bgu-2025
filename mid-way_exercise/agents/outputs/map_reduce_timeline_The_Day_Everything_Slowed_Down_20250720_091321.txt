@@ -1,0 +1,47 @@
+
+• 2:47 AM - User jmalik connected via corp-vpn3
+• 3:11 AM - File permission change to buildconfig.yaml on staging-3
+• 3:13 AM - File logi_loader.dll copied to four separate machines
+• 3:39 AM - Kiera messaged exactly egress volumes on the staging subnet
+• 4:23 AM - Hundreds of requests in internal DNS logs
+• 6:09 AM - Phone buzzed with low-priority alert notification from AV console exactly heuristic scan trigger on dev server
+• 6:12 AM - Credentials authenticated successfully
+• 6:53 AM - Credentials authenticated successfully
+• 7:12 PM - Shut down work laptop
+• 8:17 AM - Standup started, mentioned the AV alert and mysterious reboot
+• 8:43 AM - Pulled up the system logs for staging-3, found a reboot logged exactly 3:11 AM
+• 9:20 AM - Support team pinged on IT helpdesk Slack channel exactly slow file access in sales
+• 10:12 AM - Found both machines on with sticky note "Training PC - Do Not Use" taped to one
+• 10:30 PM - Went to bed
+• 10:34 AM - Matt replied and asked for a copy of the logs
+• 11:03 AM - Helpdesk started logging performance issues across the board, developers reporting Git repo timeouts, asked Dave exactly latency on WAN monitors
+• 11:48 AM - Escalated to a full internal incident
+• 12:32 PM - Sent containment advisory to IT team
+• 1:11 PM - Rereading logs and piecing together information from fragments of time
+• 2:06 PM - Confirmed sharris's account compromised
+• 2:06 PM - Suspected training PC used as entry vector
+• 2:47 PM - Joined emergency call with Legal, security, and two VPs, gave summary of unauthorized access and credential compromise
+• 3:11 PM - Legal team prepping disclosures
+• 4:55 PM - Continued working silently on the issue
+• 8:19 PM - Stood up and left the office
+• 9:02 PM - Woke up groggy at 6:45 AM the next day
+• 9:24 AM - Discovered hidden scheduled task triggering daily at 3:11 AM
+• Time not specified - Planned to check the build runner issue after standup
+• Time not specified - Ed made a comment exactly "Ghosts in the shell" regarding the issue
+• Time not specified - Noticed no matching patch activity or automation job triggered at the time of reboot
+• Time not specified - Uptime counter reset, hardware status logs had a brief gap of exactly five minutes
+• Time not specified - Walked over to sales area, observed file explorer lagging when accessing shared drive
+• Time not specified - Checked SMB traffic, noticed high traffic from user sharris to the same folder
+• Time not specified - Asked sharris exactly the activity, she looked puzzled
+• Time not specified - Sent a message to Matt exactly odd logins
+• Time not specified - Noticed malformed packets from SW-07B
+• Time not specified - Walked to the west wing of the third floor to check marketing workstations
+• Time not specified - Junaid Malik filed PTO two weeks ago
+• Time not specified - Narrator called Matt exactly jmalik's connection
+• Time not specified - Matt found unusual DNS logs with weird subdomains
+• Time not specified - Narrator checked internal DNS logs and found hundreds of requests since early that morning, some as early as 4:23 AM
+• Time not specified - Malware detected
+• Time not specified - Attacker used dormant accounts
+• Time not specified - Attacker hid in plain sight
+• Time not specified - Attacker timed activities to match system quiet hours
+• Time not specified - Question raised exactly how long malware had been present before detection

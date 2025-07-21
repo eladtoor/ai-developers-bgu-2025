@@ -1,0 +1,27 @@
+
+• 3:11 AM - File permission change to buildconfig.yaml on staging-3 before reboot
+• 3:13 AM - Logi_loader.dll copied to four machines, including staging-3 and internal Jenkins node
+• 3:27 AM - Received Slack message from Kiera exactly the build runner on staging-3 rebooting
+• 6:12 AM - User sharris' domain account authenticated successfully
+• 6:53 AM - User sharris' domain account authenticated successfully again
+• 7:00 AM - At desk, sipping burnt coffee, scrolling through email
+• 7:12 AM - User sharris' domain account authenticated successfully for the third time
+• 7:30 AM - Arrived at the office, found Matt already there, both exhausted and ready to continue addressing the security breach
+• 9:20 AM - Support team pinged on IT helpdesk Slack channel exactly slow file access in sales, investigated and found high SMB traffic from user sharris to \\corp-fs02\Q2_Pipeline share
+• 9:24 AM - Discovered hidden scheduled task on training machine triggering daily at 3:11 AM for the past two weeks
+• 10:12 AM - Found both machines on with guest accounts logged in, took pictures of screens with sticky note saying "Training PC - Do Not Use"
+• 11:03 AM - Legal team prepping disclosures
+• 11:03 AM - Helpdesk began logging performance issues, developers reporting Git repo timeouts, reported WAN latency and packet drops from corp-vpn3
+• 11:15 AM - Discovered jmalik connected via corp-vpn3 at 2:47 AM despite being on leave
+• 11:20 AM - Matt alerted exactly suspicious outbound DNS requests, investigated internal DNS logs showing hundreds of requests since early morning
+• 1:11 PM - Sat at desk, rereading logs, piecing together the whole incident
+• 2:06 PM - Confirmed sharris's account compromised, likely used as lateral jump point, suspected training PC as entry vector with USB stick labeled "MARKETING_CAMPAIGN_2020" inserted
+• 3:39 PM - Kiera messaged exactly egress volumes on the staging subnet, discovered over 7GB of outbound traffic to cdn.nodeflux.ai, not caught by DLP
+• 4:55 PM - Discovered over 7GB of outbound traffic to cdn.nodeflux.ai, not caught by DLP
+• 5:00 PM - Joined emergency call with Legal, security, and VPs to discuss potential breach notification
+• 8:19 PM - Continued working silently until late evening
+• 9:02 PM - Left the office after a long day
+• 6:45 AM (next day) - Woke up groggy and headed to the office
+• 2:47 AM (two days ago) - Discovered jmalik connected via corp-vpn3 despite being on leave
+• 3:11 AM (two weeks ago) - Hidden scheduled task on training machine triggered daily
+• Ongoing - Malware carefully used dormant accounts, hid in plain sight, and timed activities during system quiet hours, raising questions exactly how long it had been present before detection.

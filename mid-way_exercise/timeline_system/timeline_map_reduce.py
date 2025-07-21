@@ -16,6 +16,7 @@ def map_reduce_timeline_function(file_path: str) -> str:
     """
     # Load the document
     with open(file_path, 'r', encoding='utf-8') as file:
+        
         text = file.read()
     
     # Split text into chunks

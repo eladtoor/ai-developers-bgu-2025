@@ -1,0 +1,23 @@
+- 7:12 PM - Shut down work laptop
+- 10:30 PM - Went to bed
+- 2:47 AM - jmalik connected via corp-vpn3
+- 3:11 AM - System logs for staging-3 show a reboot with no matching patch activity or automation job triggered, file permission change to buildconfig.yaml noted
+- 3:13 AM - logi_loader.dll copied to four machines including staging-3, idle lab servers, and internal Jenkins node
+- 3:27 AM - Received Slack message from Kiera exactly the reboot on staging-3 build runner
+- 3:39 AM - Kiera messaged exactly egress volumes on staging subnet
+- 9:24 AM - Discovered hidden scheduled task triggering daily at 3:11 AM on training machine disguised as printer driver update
+- 9:30 AM - Discovered logi_loader.dll present in compressed form on Jenkins pipeline, embedded in test runner artifact
+- 11:03 AM - Legal team prepping disclosures
+- 11:48 AM - Escalated to a full internal incident, sent containment advisory to IT team to lock down VPN access, audit active sessions, and isolate west wing switch stack
+- 1:11 PM - Legal team prepping disclosures
+- 1:11 PM - Sat at desk, piecing together fragments of time from logs
+- 2:06 PM - Realized training PC used as entry vector, USB stick labeled "MARKETING_CAMPAIGN_2020" inserted, no endpoint protection installed
+- 3:39 PM - Kiera messaged exactly egress volumes on staging subnet, data flowing out to cdn.nodeflux.ai, DLP didn't catch it
+- 4:55 PM - Data flowing out to cdn.nodeflux.ai, over 7GB of outbound traffic in the last six hours, piped slowly over HTTPS
+- 4:55 PM - Joined emergency call with Legal, security, and two VPs, discussed unauthorized access, credential compromise, probable exfiltration, started crafting breach notification comms
+- 8:19 PM - Worked until this time, mostly silent except for keyboard clacks and occasional sigh
+- 9:02 PM - Left the office, hadn't eaten since the night before, outside smelled like rain
+- Wednesday, 6:45 AM - Woke up groggy, dreamt of servers with arms shaking awake
+- 7:30 AM - Arrived at the office, Matt already there with bloodshot eyes, nodded silently
+- 8:15 AM - Discovered that the malware was carefully hidden using dormant accounts and timed to match system quiet hours
+- 8:45 AM - Started questioning how long the malware had been present before detection

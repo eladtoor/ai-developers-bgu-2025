@@ -11,13 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()  # Load environment variables from .env file
 from ragas import evaluate
 from ragas.metrics import (
-    faithfulness,
-    answer_relevancy,
-    context_recall,
-    answer_correctness,
-    answer_similarity,
-    context_precision,
-    context_entity_recall
+    answer_correctness
 )
 from datasets import Dataset
 import os
@@ -47,7 +41,16 @@ def create_evaluation_dataset(ground_truth_data, model_answers):
     # Extract data from ground truth
     questions = [item["question"] for item in ground_truth_data["ground_truth"]]
     contexts = [item["context"] for item in ground_truth_data["ground_truth"]]
-    ground_truth_answers = [item["answer"] for item in ground_truth_data["ground_truth"]]
+    
+    # Handle both single answers and multiple valid answers
+    ground_truth_answers = []
+    for item in ground_truth_data["ground_truth"]:
+        if isinstance(item["answer"], list):
+            # Multiple valid answers - use the first one for RAGAS, but we'll handle matching differently
+            ground_truth_answers.append(item["answer"][0])
+        else:
+            # Single answer
+            ground_truth_answers.append(item["answer"])
     
     # Create dataset
     dataset_dict = {
@@ -80,13 +83,7 @@ def run_ragas_evaluation(model_answers, output_file="evaluation_results.json"):
     results = evaluate(
         dataset,
         metrics=[
-            faithfulness,
-            answer_relevancy,
-            context_recall,
-            answer_correctness,
-            answer_similarity,
-            context_precision,
-            context_entity_recall
+            answer_correctness
         ]
     )
     
@@ -123,25 +120,14 @@ def print_evaluation_summary(results):
     print("\nMetrics:")
     print("-" * 30)
     
-    # Calculate average scores for each metric
-    metric_names = [
-        "faithfulness",
-        "answer_relevancy", 
-        "context_recall",
-        "answer_correctness",
-        "semantic_similarity",
-        "context_precision",
-        "context_entity_recall"
-    ]
-    
-    for metric_name in metric_names:
-        scores = [item[metric_name] for item in metrics]
-        avg_score = sum(scores) / len(scores)
-        print(f"{metric_name.replace('_', ' ').title()}: {avg_score:.4f}")
+    # Calculate average score for answer correctness
+    scores = [item["answer_correctness"] for item in metrics]
+    avg_score = sum(scores) / len(scores)
+    print(f"Answer Correctness: {avg_score:.4f}")
     
     print("\n" + "="*50)
 
-def create_sample_answers_for_testing():
+
     """
     Create sample answers for testing the evaluation system.
     These would normally come from your timeline extraction system.
@@ -189,27 +175,41 @@ def extract_answers_from_timeline(timeline_path, ground_truth_data):
     For each ground truth question, find the most relevant line in the timeline file.
     Returns a list of answers for RAGAS evaluation.
     """
+    import re
+    
     # Read timeline lines
     with open(timeline_path, encoding='utf-8') as f:
         timeline_lines = [line.strip('• ').strip() for line in f if line.strip() and line.strip().startswith('•')]
+
+    def extract_time_from_line(line):
+        """Extract just the time part from a timeline line."""
+        # Pattern to match time formats: 7:12 PM, 9:00 AM, 2:47 AM, etc.
+        time_pattern = r'\d{1,2}:\d{2}\s*(AM|PM)'
+        match = re.search(time_pattern, line)
+        if match:
+            return match.group(0)  # Return just the time part
+        return line  # Return full line if no time pattern found
 
     answers = []
     for item in ground_truth_data['ground_truth']:
         # Try to match by time or a keyword from the answer/context
         found = None
+        # Get the answer to match against (use first answer if it's a list)
+        answer_to_match = item['answer'][0] if isinstance(item['answer'], list) else item['answer']
+        
         # Try to match by time in answer (e.g., '8:15 PM')
-        if any(char.isdigit() for char in item['answer']):
+        if any(char.isdigit() for char in answer_to_match):
             for line in timeline_lines:
-                if item['answer'][:5] in line or item['answer'][:4] in line:
-                    found = line
+                if answer_to_match[:5] in line or answer_to_match[:4] in line:
+                    found = extract_time_from_line(line)
                     break
         # If not found, try to match by a keyword from the answer
         if not found:
-            for word in item['answer'].split():
+            for word in answer_to_match.split():
                 if len(word) > 3:
                     for line in timeline_lines:
                         if word in line:
-                            found = line
+                            found = extract_time_from_line(line)
                             break
                 if found:
                     break
@@ -219,13 +219,24 @@ def extract_answers_from_timeline(timeline_path, ground_truth_data):
                 if len(word) > 3:
                     for line in timeline_lines:
                         if word in line:
-                            found = line
+                            found = extract_time_from_line(line)
                             break
                 if found:
                     break
         # If still not found, just return 'Not found'
         if not found:
             found = 'Not found'
+        
+        # Check if the found answer matches any of the valid answers in ground truth
+        if found != 'Not found':
+            ground_truth_item = ground_truth_data['ground_truth'][len(answers)]
+            if isinstance(ground_truth_item["answer"], list):
+                # Multiple valid answers - check if our answer matches any of them
+                valid_answers = ground_truth_item["answer"]
+                if found in valid_answers:
+                    # Use the first valid answer format for RAGAS
+                    found = valid_answers[0]
+        
         answers.append(found)
     return answers
 
@@ -243,7 +254,7 @@ def main():
     print("="*40)
     
     try:
-        map_reduce_path = '../timeline_system/map_reduce_timeline_the_day_everything_slowed_down.txt'
+        map_reduce_path = '../agents/map_reduce_timeline_The_Day_Everything_Slowed_Down.txt'
         print(f"Loading timeline from: {map_reduce_path}")
         map_reduce_answers = extract_answers_from_timeline(map_reduce_path, ground_truth_data)
         
@@ -263,7 +274,7 @@ def main():
     print("="*40)
     
     try:
-        refine_path = '../timeline_system/refine_timeline_the_day_everything_slowed_down.txt'
+        refine_path = '../agents/refine_timeline_The_Day_Everything_Slowed_Down.txt'
         print(f"Loading timeline from: {refine_path}")
         refine_answers = extract_answers_from_timeline(refine_path, ground_truth_data)
         

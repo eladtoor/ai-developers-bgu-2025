@@ -1,0 +1,34 @@
+
+• 6:12 AM - sharris' domain account authenticated successfully
+• 6:53 AM - sharris' domain account authenticated successfully again
+• 7:12 AM - Shut down work laptop
+• 7:30 AM - Arrived at the office, found Matt already there, eyes bloodshot, he nodded silently
+• 8:17 AM - Standup started, discussed AV alert and mysterious reboot on staging-3 build runner
+• 8:43 AM - Pulled up system logs for staging-3, found reboot at 3:11 AM with no matching patch activity or automation job triggered, noted brief gap in hardware status logs
+• 9:20 AM - Support team pinged on IT helpdesk Slack channel exactly slow file access in sales, walked over to sales area to investigate
+• 9:24 AM - Discovered hidden scheduled task on training machine triggering daily at 3:11 AM for the past two weeks
+• 9:30 AM - Discovered file explorer lagging for \\corp-fs02\Q2_Pipeline share, checked SMB traffic and found high activity from user sharris hitting the same folder
+• 10:00 AM - Asked sharris exactly high SMB traffic, she looked puzzled
+• 10:12 AM - Found both marketing workstations powered on with guest accounts logged in, took pictures of screens
+• 10:30 AM - Sent message to Matt, the security engineer, exactly odd logins from sharris
+• 10:34 AM - Matt requested logs, zipped and sent them over
+• 11:00 AM - Walked to the west wing of the third floor to check on unused marketing workstations, found them powered on
+• 11:03 AM - Helpdesk began logging performance issues across the board, developers reporting Git repo timeouts, Dave from networking mentioned packet drops from corp-vpn3
+• 11:15 AM - Discovered jmalik connected via corp-vpn3 at 2:47 AM despite being on leave, alerted Matt
+• 11:20 AM - Matt identified unusual outbound connections in DNS logs to non-Microsoft-owned subdomains, investigated further
+• 11:24 AM - Discovered logi_loader.dll present in compressed form on Jenkins pipeline, embedded in a test runner artifact
+• 11:30 AM - Internal DNS logs revealed hundreds of requests to suspicious subdomains since 4:23 AM
+• 11:48 AM - Escalated to a full internal incident, sent containment advisory to IT team to lock down VPN access, audit active sessions, and isolate west wing switch stack
+• 12:32 PM - Closed VLAN to outbound traffic except through inspection proxy, noise dropped immediately
+• 1:11 PM - Legal team prepping disclosures
+• 2:06 PM - Confirmed sharris's account compromised, suspected entry vector through training PC with USB stick labeled "MARKETING_CAMPAIGN_2020" and no endpoint protection installed
+• 3:11 PM - File permission change to buildconfig.yaml on staging-3 before machine rebooted
+• 3:13 PM - logi_loader.dll copied to four machines, including staging-3, idle lab servers, and internal Jenkins node
+• 3:39 PM - Kiera messaged exactly egress volumes on staging subnet, discovered over 7GB of outbound traffic to cdn.nodeflux.ai not caught by DLP
+• 4:55 PM - Discovered over 7GB of outbound traffic to cdn.nodeflux.ai not caught by DLP
+• 4:55 PM - Joined emergency call with Legal, security, and VPs to discuss unauthorized access, credential compromise, and potential breach notification
+• 8:19 PM - Continued working silently until late evening
+• 9:02 PM - Left the office after a long day
+• 6:45 AM (next day) - Woke up groggy
+• 7:00 AM - Realized the malware was careful, using dormant accounts and hiding in plain sight
+• 7:15 AM - Contemplated how long the attacker had been present before detection

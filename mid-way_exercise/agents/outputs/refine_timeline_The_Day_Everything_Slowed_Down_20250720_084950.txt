@@ -1,0 +1,29 @@
+
+• 3:27 AM - Received Slack message from Kiera exactly build runner on staging-3 rebooting
+• 2:47 AM - User jmalik connected via corp-vpn3 and stayed online for 6 hours
+• 4:23 AM - Outbound DNS requests to unusual subdomains like updates-status-sync.live and metrics.windowupdate.io detected
+• 6:12 AM - User sharris' domain account authenticated successfully
+• 6:53 AM - User sharris' domain account authenticated successfully again
+• 7:41 AM - User sharris' domain account authenticated successfully once more
+• 8:17 AM - Standup meeting started, discussed AV alert and mysterious reboot on staging-3
+• 8:43 AM - Pulled up system logs for staging-3, found reboot at 3:11 AM with no patch activity or automation job triggered, noted brief gap in hardware status logs
+• 9:20 AM - Support team pinged exactly slow file access on shared drive, investigated and found high SMB traffic from user sharris to same folder
+• 9:24 AM - Discovered hidden scheduled task on training machine triggering daily at 3:11 AM for past two weeks
+• 10:12 AM - Found both marketing workstations powered on with guest accounts logged in, took pictures of screens
+• 10:34 AM - Sent logs to Matt, the security engineer, who was already investigating login patterns
+• 11:03 AM - Helpdesk started logging performance issues, developers reporting Git repo timeouts, Dave from networking mentioned minor packet drops from corp-vpn3
+• 11:48 AM - Escalated to a full internal incident, sent containment advisory to IT team, locked down VPN access, audited active sessions, and isolated west wing switch stack
+• 1:11 PM - Legal team prepping disclosures
+• 1:11 PM - Discovered logi_loader.dll present in compressed form on Jenkins pipeline, embedded in test runner artifact
+• 2:06 PM - Confirmed sharris's account compromised, likely used as lateral jump point, suspected training PC as entry vector with USB stick labeled "MARKETING_CAMPAIGN_2020" inserted
+• 3:39 PM - Received message from Kiera exactly egress volumes on staging subnet, over 7GB of outbound traffic in last six hours to cdn.nodeflux.ai, not caught by DLP
+• 4:55 PM - Discovered over 7GB of outbound traffic to cdn.nodeflux.ai, not detected by DLP
+• 4:55 PM - Joined emergency call with Legal, security, and VPs to discuss unauthorized access, credential compromise, and potential breach notification
+• 8:19 PM - Continued working silently until late evening
+• 9:02 PM - Left the office after a long day of work
+• 6:45 AM (next day) - Woke up groggy and headed to the office
+• 7:30 AM (next day) - Arrived at the office to find Matt already there, both exhausted and ready to continue the investigation
+• 1:11 PM - Sat at desk, piecing together fragments of time, realizing significance of file permission change at 3:11 AM on staging-3
+• 1:11 PM - Discovered file alteration on staging-3 before reboot, indicating something running in memory
+• 1:11 PM - Legal team prepping disclosures, investigation intensifying
+• 3:11 PM - Realized the malware was carefully hidden using dormant accounts, operating during system quiet hours, raising questions exactly how long it had been present undetected.

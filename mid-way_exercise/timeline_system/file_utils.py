@@ -1,6 +1,6 @@
 def save_timeline_to_file(timeline_content: str, file_path: str, method: str) -> str:
     """
-    Save timeline content to a file with appropriate naming.
+    Save timeline content to a file with timestamp to avoid overwriting.
     
     Args:
         timeline_content: The timeline text to save
@@ -10,9 +10,31 @@ def save_timeline_to_file(timeline_content: str, file_path: str, method: str) ->
     Returns:
         The output file path
     """
-    # Create output filename
-    base_name = file_path.replace('.txt', '')
-    output_file = f"{method}_timeline_{base_name}.txt"
+    import os
+    from datetime import datetime
+    
+    # Create outputs directory in agents folder if it doesn't exist
+    current_dir = os.getcwd()
+    if 'agents' in current_dir:
+        # We're in the agents directory
+        summaries_dir = "outputs"
+    elif 'tools' in current_dir:
+        # We're in the tools directory, go to agents/outputs
+        summaries_dir = os.path.join("..", "agents", "outputs")
+    else:
+        # Default to timeline_summaries
+        summaries_dir = "timeline_summaries"
+    
+    if not os.path.exists(summaries_dir):
+        os.makedirs(summaries_dir)
+    
+    # Extract just the filename without path
+    filename = os.path.basename(file_path)
+    base_name = filename.replace('.txt', '')
+    
+    # Create timestamp for unique filename
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_file = os.path.join(summaries_dir, f"{method}_timeline_{base_name}_{timestamp}.txt")
     
     # Save to file
     with open(output_file, 'w', encoding='utf-8') as f:

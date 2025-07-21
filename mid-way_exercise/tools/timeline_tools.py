@@ -1,16 +1,73 @@
 from langchain.tools import tool
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'timeline_system'))
 from timeline_map_reduce import map_reduce_timeline_function
 from timeline_refine import refine_timeline_function
-from file_utils import save_timeline_to_file
 import os
+import sys
+from pathlib import Path
 from dotenv import load_dotenv
 import re
-from timeline_prompts import create_extract_timeline_prompt, create_improve_timeline_prompt, create_merge_timeline_prompt
 from langchain_openai import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage
 
+# Add the project root to the path to import file_utils
+sys.path.append(str(Path(__file__).parent.parent))
+from timeline_system.file_utils import save_timeline_to_file
+
 # Load environment variables
 load_dotenv()
+
+def resolve_story_path(file_path):
+    """Resolve the file path for a story, searching common folders if needed."""
+    print(f"DEBUG: Looking for file: {file_path}")
+    print(f"DEBUG: Current working directory: {os.getcwd()}")
+    
+    # Get the project root (mid-way_exercise directory)
+    current_dir = os.getcwd()
+    if 'tools' in current_dir:
+        # We're in the tools directory, go up one level
+        project_root = os.path.dirname(current_dir)
+    elif 'agents' in current_dir:
+        # We're in the agents directory, go up one level
+        project_root = os.path.dirname(current_dir)
+    else:
+        project_root = current_dir
+    
+    print(f"DEBUG: Project root: {project_root}")
+    
+    # Try as given (relative to current directory)
+    if os.path.isfile(file_path):
+        print(f"DEBUG: Found file at: {file_path}")
+        return file_path
+    
+    # Try in data/ (relative to project root)
+    data_path = os.path.join(project_root, 'data', file_path)
+    print(f"DEBUG: Trying data path: {data_path}")
+    if os.path.isfile(data_path):
+        print(f"DEBUG: Found file at: {data_path}")
+        return data_path
+    
+    # Try in timeline_system/ (relative to project root)
+    ts_path = os.path.join(project_root, 'timeline_system', file_path)
+    print(f"DEBUG: Trying timeline_system path: {ts_path}")
+    if os.path.isfile(ts_path):
+        print(f"DEBUG: Found file at: {ts_path}")
+        return ts_path
+    
+    # Try just the filename in data/ (in case user passed full path)
+    filename = os.path.basename(file_path)
+    if filename != file_path:  # Only if it's different
+        data_filename_path = os.path.join(project_root, 'data', filename)
+        print(f"DEBUG: Trying data filename path: {data_filename_path}")
+        if os.path.isfile(data_filename_path):
+            print(f"DEBUG: Found file at: {data_filename_path}")
+            return data_filename_path
+    
+    # Not found
+    print(f"DEBUG: File not found in any location")
+    raise FileNotFoundError(f"Could not find file: {file_path}")
 
 @tool
 def map_reduce_timeline(file_path: str) -> str:
@@ -23,14 +80,16 @@ def map_reduce_timeline(file_path: str) -> str:
     Returns:
         A timeline summary with bullet points organized chronologically
     """
+    # Resolve file path
+    resolved_path = resolve_story_path(file_path)
     # Get timeline using map-reduce method
-    timeline = map_reduce_timeline_function(file_path)
+    timeline = map_reduce_timeline_function(resolved_path)
     
     # Validate and improve the timeline
     validated_timeline = validate_timeline_answer(timeline)
     
     # Save to file
-    output_file = save_timeline_to_file(validated_timeline, file_path, "map_reduce")
+    output_file = save_timeline_to_file(validated_timeline, resolved_path, "map_reduce")
     
     return f"Timeline created using Map-Reduce method and saved to {output_file}:\n\n{validated_timeline}"
 
@@ -45,14 +104,16 @@ def refine_timeline(file_path: str) -> str:
     Returns:
         A refined timeline summary with bullet points
     """
+    # Resolve file path
+    resolved_path = resolve_story_path(file_path)
     # Get timeline using refine method
-    timeline = refine_timeline_function(file_path)
+    timeline = refine_timeline_function(resolved_path)
     
     # Validate and improve the timeline
     validated_timeline = validate_timeline_answer(timeline)
     
     # Save to file
-    output_file = save_timeline_to_file(validated_timeline, file_path, "refine")
+    output_file = save_timeline_to_file(validated_timeline, resolved_path, "refine")
     
     return f"Timeline created using Refine method and saved to {output_file}:\n\n{validated_timeline}"
 
@@ -118,8 +179,8 @@ if __name__ == "__main__":
     for tool in tools:
         print(f"- {tool.name}: {tool.description}")
     
-    # Test with the house break-in story
-    test_file = "house_break_in_story.txt"
+    # Test with the day everything slowed down story
+    test_file = "The_Day_Everything_Slowed_Down.txt"
     
     print(f"\nTesting timeline tools with {test_file}...")
     

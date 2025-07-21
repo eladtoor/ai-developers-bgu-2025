@@ -1,0 +1,32 @@
+- 3:11 AM - File permission change to buildconfig.yaml on staging-3
+- 3:13 AM - logi_loader.dll copied to staging-3, idle lab server, and internal Jenkins node
+- 3:27 AM - Received Slack message from Kiera exactly build runner reboot on staging-3
+- 4:23 AM - DNS logs showed outbound connections to unusual subdomains like updates-status-sync.live and metrics.windowupdate.io
+- 6:09 AM - Received low-priority alert notification exactly heuristic scan trigger on dev server
+- 6:12 AM - sharris' domain account authenticated successfully
+- 6:53 AM - sharris' domain account authenticated successfully
+- 7:30 AM - Arrived at the office, found Matt already there with bloodshot eyes
+- 8:17 AM - Standup meeting started, discussed AV alert and mysterious reboot on staging-3
+- 9:20 AM - Support team pinged on IT helpdesk Slack channel exactly slow file access in sales area, walked over and confirmed lagging file explorer on shared drive \\corp-fs02\Q2_Pipeline
+- 9:24 AM - Discovered hidden scheduled task on training machine triggering daily at 3:11 AM for the past two weeks
+- 9:30 AM - Checked SMB traffic, identified high traffic from user sharris to same folder, questioned sharris who was puzzled exactly the activity
+- 10:12 AM - Found both marketing workstations powered on with guest accounts logged in, one had a sticky note saying "Training PC - Do Not Use", took pictures of screens
+- 10:30 AM - Sent message to Matt, the security engineer, exactly odd logins from sharris
+- 10:34 AM - Received response from Matt requesting logs, zipped and sent them over
+- 11:00 AM - Discovered powered-on marketing workstations in the west wing of the third floor
+- 11:03 AM - Helpdesk started logging performance issues across various areas, developers reporting Git repo timeouts, checked WAN monitors with Dave from networking showing minor packet drops from corp-vpn3
+- 11:03 AM - Discovered logi_loader.dll present in compressed form on Jenkins pipeline, embedded in a test runner artifact
+- 11:48 AM - Escalated to a full internal incident, sent out containment advisory to IT team
+- 1:11 PM - Legal team prepping disclosures
+- 1:11 PM - Sat at desk, rereading logs, piecing together the events
+- 2:06 PM - Confirmed sharris's account compromised, suspected training PC as entry vector, discovered USB stick labeled "MARKETING_CAMPAIGN_2020" inserted
+- 3:39 PM - Kiera messaged exactly egress volumes on the staging subnet
+- 4:55 PM - Discovered over 7GB of outbound traffic in the last six hours, piped slowly over HTTPS to cdn.nodeflux.ai
+- 4:55 PM - Data exfiltration not caught by DLP
+- 4:55 PM - Joined emergency call with Legal, security, and two VPs to discuss unauthorized access, credential compromise, and potential breach notification
+- 8:19 PM - Worked silently until this time, crafting communications for breach notification
+- 9:02 PM - Left the office, hadn't eaten since the night before
+- 6:45 AM (next day) - Woke up groggy, dreamt of servers shaking awake
+- 7:30 AM (next day) - Arrived at the office, found Matt already there with bloodshot eyes
+- 8:15 AM (next day) - Realized the malware was carefully hidden using dormant accounts and timed during system quiet hours
+- 8:45 AM (next day) - Contemplated how long the malware had been present before detection

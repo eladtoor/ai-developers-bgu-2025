@@ -1,0 +1,36 @@
+- 3:11 AM - File permission change to buildconfig.yaml on staging-3 before reboot
+- 3:13 AM - Logi_loader.dll copied to four machines, including staging-3, internal Jenkins node, and idle lab servers
+- 3:11 AM (daily for past two weeks) - Hidden scheduled task triggered on one training machine disguised as a printer driver update
+- 3:27 AM - Received Slack message from Kiera exactly build runner on staging-3 rebooting
+- 4:23 AM - Hundreds of requests to weird subdomains in internal DNS logs
+- 4:55 PM - Discovered over 7GB of outbound traffic in the last six hours to cdn.nodeflux.ai, DLP didn't catch it
+- 6:09 AM - Received low-priority alert notification exactly heuristic scan trigger on dev server
+- 6:12 AM - sharris' domain account authenticated successfully
+- 6:53 AM - sharris' domain account authenticated successfully
+- 6:45 AM - Woke up groggy, dreamt of servers shaking awake
+- 7:00 AM - At desk, sipping burnt coffee, scrolling through email
+- 7:12 AM - Shut down work laptop
+- 7:30 AM - Arrived at the office, Matt already there with bloodshot eyes, nodded silently
+- 8:17 AM - Standup meeting started, mentioned AV alert and mysterious reboot
+- 8:43 AM - Pulled up system logs for staging-3, found reboot at 3:11 AM with no matching patch activity or automation job triggered, noted brief gap in hardware status logs
+- 9:20 AM - Support team pinged exactly slow file access on shared drive reported by sales team, investigated and found excessive SMB traffic from user sharris to \\corp-fs02\Q2_Pipeline
+- 9:24 AM - Discovered hidden scheduled task triggering daily at 3:11 AM on one training machine
+- 10:12 AM - Found both machines on with sticky note "Training PC - Do Not Use" taped to one, both logged in with guest accounts, took pictures of screens
+- 10:30 AM - Sent message to Matt exactly odd logins from sharris
+- 10:34 AM - Matt replied, already looking into login patterns, requested copy of logs, logs zipped and sent
+- 10:45 AM - Discovered malformed packets from internal switch SW-07B connecting to the west wing of the third floor
+- 11:03 AM - Helpdesk logging performance issues across the board, developers reporting Git repo timeouts, asked Dave from networking exactly WAN latency, reported few packet drops from corp-vpn3
+- 11:03 AM - Discovered logi_loader.dll present in compressed form on Jenkins pipeline, embedded in a test runner artifact
+- 11:48 AM - Escalated to a full internal incident, sent containment advisory to IT team to lock down VPN access, audit active sessions, and isolate west wing switch stack
+- 1:11 PM - Legal team prepping disclosures
+- 12:32 PM - Closed VLAN to outbound traffic except through inspection proxy, noise dropped immediately
+- 1:11 PM - Sat at desk, rereading logs, piecing together the whole thing from fragments of time
+- 2:06 PM - Confirmed sharris's account compromised, suspected training PC used as entry vector with USB stick labeled "MARKETING_CAMPAIGN_2020" inserted, had a pit in my stomach
+- 2:47 PM - Had a pit in my stomach, realizing severity of situation
+- 3:39 PM - Kiera messaged exactly egress volumes on the staging subnet
+- 7:12 PM - Shut down work laptop
+- 8:19 PM - Worked silently crafting breach notification comms with legal, security, and VPs
+- 9:02 PM - Left the office, hadn't eaten since the night before, outside smelled like rain
+- 2:47 AM - jmalik connected via corp-vpn3 and stayed online for 6 hours
+- Early morning - DNS logs showed outbound connections to unusual subdomains like updates-status-sync.live and metrics.windowupdate.io
+- 3:11 AM - Malware carefully used dormant accounts, hid in plain sight, and timed activities to match system quiet hours, leaving us wondering how long it had been there before detection.
