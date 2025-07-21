@@ -312,4 +312,12 @@ models/
 *.pkl
 *.pickle
 *.h5
-*.hdf5 
+*.hdf5
+
+# ChromaDB database files
+chroma_db/
+**/chroma_db/
+**/utils/chroma_db/
+**/tools/chroma_db/
+*.bin
+*.index 
